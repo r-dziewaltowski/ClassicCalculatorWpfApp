@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicCalculatorWpfApp", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E0F06C4D-273D-434B-A56E-51D3C504E220}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E0F06C4D-273D-434B-A56E-51D3C504E220}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassicCalculatorWpfApp.Tests", "test\ClassicCalculatorWpfApp.Tests.csproj", "{2D9D74D7-24FE-D1C4-2535-A237BEF85830}"
 EndProject

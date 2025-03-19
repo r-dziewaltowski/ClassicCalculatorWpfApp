@@ -31,8 +31,8 @@ The behaviour follows quite closely my own physical calculator device.
 ## Usage
 ```bash
 git clone https://github.com/r-dziewaltowski/ClassicCalculatorWpfApp.git
-cd .\ClassicCalculatorWpfApp\src
-dotnet run
+cd .\ClassicCalculatorWpfApp\
+dotnet run --project .\src\ClassicCalculatorWpfApp\
 ```
 
 ## License

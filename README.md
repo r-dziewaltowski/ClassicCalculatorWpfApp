@@ -30,13 +30,9 @@ The behaviour follows quite closely my own physical calculator device.
 
 ## Usage
 ```bash
-git clone https://github.com/r-dziewaltowski/ClassicCalculator.git
-cd .\ClassicCalculator\
-```
-The command below should be run from the root folder.
-
-```bash
-dotnet run --project .\ClassicCalculatorWpfApp\
+git clone https://github.com/r-dziewaltowski/ClassicCalculatorWpfApp.git
+cd .\ClassicCalculatorWpfApp\src
+dotnet run
 ```
 
 ## License

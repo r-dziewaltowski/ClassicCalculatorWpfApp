@@ -1,4 +1,4 @@
-# Classic Calculator WPF app
+# Classic Calculator WPF application
 A simple calculator application for Windows desktop giving a feel of using an old school physical calculator device.
 
 ## Table of Contents

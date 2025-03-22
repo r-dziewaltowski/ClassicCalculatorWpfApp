@@ -30,7 +30,8 @@ namespace ClassicCalculatorWpfApp
                 Ioc.Default.ConfigureServices(
                     new ServiceCollection()
                         .AddLogging(configureLogging)
-                        .AddTransient<ICalculator, Calculator>(provider => new Calculator(displayLength: 18))
+                        .AddTransient<ICalculator, Calculator>(provider => 
+                            new Calculator(displayLength: 18, loggerFactory.CreateLogger<Calculator>()))
                         .AddTransient<CalculatorViewModel>()
                         .BuildServiceProvider());
 

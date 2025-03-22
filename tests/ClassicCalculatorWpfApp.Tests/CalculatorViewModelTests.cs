@@ -1,5 +1,6 @@
 using ClassicCalculator;
 using FluentAssertions;
+using Microsoft.Extensions.Logging;
 using Moq;
 using System.ComponentModel;
 
@@ -7,11 +8,13 @@ namespace ClassicCalculatorWpfApp.Tests
 {
     public class CalculatorViewModelTests
     {
-        private readonly Mock<ICalculator> _mockCalculator;
+        private readonly Mock<ICalculator> _calculatorMock;
+        private readonly Mock<ILogger<CalculatorViewModel>> _loggerMock;
 
         public CalculatorViewModelTests()
         {
-            _mockCalculator = new Mock<ICalculator>();
+            _calculatorMock = new Mock<ICalculator>();
+            _loggerMock = new Mock<ILogger<CalculatorViewModel>>();
         }
 
         [Theory]
@@ -38,20 +41,20 @@ namespace ClassicCalculatorWpfApp.Tests
         public void ExecutingPressButtonCommand_ShouldCallPressButtonWithProvidedArgument(CalculatorButton calculatorButton)
         {
             // Arrange
-            var viewModel = new CalculatorViewModel(_mockCalculator.Object);
+            var viewModel = CreateCalculatorViewModel();
 
             // Act
             viewModel.PressButtonCommand.Execute(calculatorButton);
 
             // Assert
-            _mockCalculator.Verify(c => c.PressButton(calculatorButton), Times.Once);
+            _calculatorMock.Verify(c => c.PressButton(calculatorButton), Times.Once);
         }
 
         [Fact]
         public void ExecutingPressButtonCommand_ShouldRaisePropertyChangedEventForDisplayValue()
         {
             // Arrange
-            var viewModel = new CalculatorViewModel(_mockCalculator.Object);
+            var viewModel = CreateCalculatorViewModel();
             var mockEventHandler = new Mock<PropertyChangedEventHandler>();
             viewModel.PropertyChanged += mockEventHandler.Object;
 
@@ -71,14 +74,19 @@ namespace ClassicCalculatorWpfApp.Tests
         {
             // Arrange
             const string TestDisplayValue = "Test display value";
-            var viewModel = new CalculatorViewModel(_mockCalculator.Object);
-            _mockCalculator.Setup(c => c.DisplayValue).Returns(TestDisplayValue);
+            var viewModel = CreateCalculatorViewModel();
+            _calculatorMock.Setup(c => c.DisplayValue).Returns(TestDisplayValue);
 
             // Act
             var displayValue = viewModel.DisplayValue;
 
             // Assert
             displayValue.Should().Be(TestDisplayValue);
+        }
+
+        private CalculatorViewModel CreateCalculatorViewModel()
+        {
+            return new CalculatorViewModel(_calculatorMock.Object, _loggerMock.Object);
         }
     }
 }
